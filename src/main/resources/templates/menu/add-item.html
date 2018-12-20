@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+
+        <title>Title</title>
+    </head>
+    <body>
+        <h1 th:text="${title}">Default Title</h1>
+        <nav th:replace="fragments :: navigation"></nav>
+        <form name="Foo"  th:object="${form}" method="post">
+            <div class="form-group">
+                <label th:for="cheeseId">Cheese</label>
+                <select name="cheeseId">
+                    <option th:each="cheese :*{cheeses}"
+                            th:text="${cheese.name}"
+                            th:value="${cheese.Id}">
+
+                    </option>
+
+                </select>
+            </div>
+            <input type="hidden" name="menuID" th:value="*{menu.Id}"/>
+            <input type="submit" value="Add Item" />
+        </form>
+    </body>
+</html>
