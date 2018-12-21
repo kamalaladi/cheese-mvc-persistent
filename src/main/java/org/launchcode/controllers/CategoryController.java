@@ -18,13 +18,13 @@ import java.util.List;
 @RequestMapping("category")
 public class CategoryController {
     @Autowired
-    public CategoryDao categoryDao;
+    CategoryDao categoryDao;
 
     @RequestMapping(value = "")
     public String index(Model model){
-        Iterable<Category> list = categoryDao.findAll();
+       // Iterable<Category> list = categoryDao.findAll();
 
-        model.addAttribute("categories", list);
+        model.addAttribute("categories", categoryDao.findAll());
         model.addAttribute("title", "Categories");
         return "category/index";
     }
